@@ -270,8 +270,8 @@ dependencies {
     fullImplementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     fullImplementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
-    fullImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2'
-    fullImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2'
 
     // LiveData
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.9.4'
@@ -314,18 +314,16 @@ dependencies {
     fullImplementation 'com.facebook.shimmer:shimmer:0.5.0'
 
     // Koin core
-    download 'io.insert-koin:koin-core:4.1.1'
     implementation 'io.insert-koin:koin-core:4.1.1'
     // Koin main (Scope, ViewModel ...)
-    download 'io.insert-koin:koin-android:4.1.1'
     implementation 'io.insert-koin:koin-android:4.1.1'
 
     download 'hu.autsoft:krate:2.0.0'
     implementation 'hu.autsoft:krate:2.0.0'
 
     // viewBinding without reflection
-    fullImplementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.9'
-    fullImplementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9'
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.9'
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9'
 
     // add ":debug" suffix to the dependency to include debug symbols
     download firestackDependency()
@@ -371,6 +369,7 @@ dependencies {
 
     fullImplementation 'androidx.biometric:biometric:1.1.0'
 
+    implementation 'com.google.android.gms:play-services-basement:19.0.0'
     playImplementation 'com.google.android.play:app-update:2.1.0'
     playImplementation 'com.google.android.play:app-update-ktx:2.1.0'
 
