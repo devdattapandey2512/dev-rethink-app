@@ -1,0 +1,94 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.devtools.ksp"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+def firestackRepo = project.findProperty("firestackRepo") ?: "github"
+def firestackCommit = project.findProperty("firestackCommit") ?: "main"
+
+def firestackDependency = { suffix = ":debug" ->
+    switch (firestackRepo) {
+        case "jitpack":
+            return "com.github.celzero:firestack:$firestackCommit${suffix}@aar"
+        case "github":
+            return "com.github.celzero:firestack:$firestackCommit${suffix}@aar"
+        case "ossrh":
+            return "com.celzero:firestack:$firestackCommit${suffix}@aar"
+        default:
+            throw new GradleException("Unknown firestackRepo: $firestackRepo")
+    }
+}
+
+android {
+    namespace "com.celzero.bravedns"
+    compileSdk 34
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId "com.celzero.bravedns"
+        minSdkVersion 23
+        targetSdkVersion 34
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    def room_version = "2.6.1"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    ksp "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // Firestack
+    implementation 'com.google.guava:guava:33.5.0-android'
+    // add ":debug" suffix to the dependency to include debug symbols
+    implementation firestackDependency()
+
+    // Other dependencies from original repo
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.github.seancfoley:ipaddress:5.5.1'
+    implementation 'io.insert-koin:koin-android:3.5.0'
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+}
