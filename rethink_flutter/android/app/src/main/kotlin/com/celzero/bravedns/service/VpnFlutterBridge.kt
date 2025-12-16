@@ -17,6 +17,7 @@ import org.koin.core.component.inject
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.service.IpRulesManager
+import com.celzero.bravedns.service.DomainRulesManager
 
 class VpnFlutterBridge(private val context: Context) : MethodChannel.MethodCallHandler, EventChannel.StreamHandler, KoinComponent {
 
@@ -86,6 +87,14 @@ class VpnFlutterBridge(private val context: Context) : MethodChannel.MethodCallH
                  val blocked = call.argument<Boolean>("blocked") ?: false
                  serviceScope.launch {
                      IpRulesManager.blockIp(ip ?: "", blocked)
+                     result.success(true)
+                 }
+            }
+            "blockDomain" -> {
+                 val domain = call.argument<String>("domain")
+                 val blocked = call.argument<Boolean>("blocked") ?: false
+                 serviceScope.launch {
+                     DomainRulesManager.blockDomain(context, domain ?: "", blocked)
                      result.success(true)
                  }
             }

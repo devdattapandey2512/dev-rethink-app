@@ -27,6 +27,11 @@ class VpnController {
     return result ?? false;
   }
 
+  static Future<bool> blockDomain(String domain, bool blocked) async {
+    final bool? result = await _channel.invokeMethod('blockDomain', {'domain': domain, 'blocked': blocked});
+    return result ?? false;
+  }
+
   static Future<List<Map<String, dynamic>>> getRecentLogs({int limit = 100}) async {
     final List<dynamic>? logs = await _channel.invokeMethod('getRecentLogs', {'limit': limit});
     return logs?.cast<Map<String, dynamic>>() ?? [];

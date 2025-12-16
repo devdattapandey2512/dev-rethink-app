@@ -75,6 +75,9 @@ class BraveVPNService : VpnService() {
         builder.addRoute("0.0.0.0", 0)
         builder.setSession("RethinkDNS")
 
+        // Load blocked domains
+        DomainRulesManager.loadState(this)
+
         // Notify Flutter bridge
         VpnFlutterBridge.sendLog(mapOf("status" to "starting"))
 
