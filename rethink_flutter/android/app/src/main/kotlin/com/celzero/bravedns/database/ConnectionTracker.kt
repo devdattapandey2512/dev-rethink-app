@@ -18,7 +18,7 @@ package com.celzero.bravedns.database
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.celzero.bravedns.util.Constants.Companion.INIT_TIME_MS
+import com.celzero.bravedns.util.Constants.INIT_TIME_MS
 
 @Entity(
     tableName = "ConnectionTracker",

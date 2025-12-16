@@ -32,7 +32,7 @@ class AppInfo {
     var appCategory: String = ""
     var wifiDataUsed: Long = 0
     var mobileDataUsed: Long = 0
-    var connectionStatus: Int = FirewallManager.ConnectionStatus.ALLOW.id
+    var connectionStatus: Int = FirewallManager.FirewallStatus.NONE.id
     var screenOffAllowed: Boolean = false
     var backgroundAllowed: Boolean = false
     var uploadBytes: Long = 0

@@ -1,6 +1,6 @@
 package com.celzero.bravedns.service
 
-import kotlinx.coroutines.flow.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import android.util.Log
 
 object FirewallManager {

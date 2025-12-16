@@ -1,30 +1,61 @@
-*.iml
-.gradle
-/local.properties
-/.idea
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+# Miscellaneous
+*.class
+*.log
+*.lock
 .DS_Store
-/app/build
-/build
-/captures
-/tun2socks/build/
-.externalNativeBuild
-.cxx
+.thumbs.db
+*.patch
+
+# IntelliJ / IDE
+*.iml
+.idea/
+.vscode/
+
+# Android
+.gradle/
+build/
+app/build/
 local.properties
+.externalNativeBuild/
+.cxx/
+captures/
+.signing/
+*.apk
+*.ap_
+*.aab
+*.dex
+
+# Keystores
+*.keystore
+*.jks
+
+# Google Services
+google-services.json
+app/google-services.json
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+
+# Rethink Flutter Sub-project
+/rethink_flutter/build/
+/rethink_flutter/.dart_tool/
+/rethink_flutter/.flutter-plugins
+/rethink_flutter/.flutter-plugins-dependencies
+
+# Project Specific
+/tun2socks/build/
 app/src/headless/assets
 /.knownPackages
-/*.patch
-/build-tools
-/emulator
-/licenses
-/patcher
-/platform-tools
-/platforms
-/tools
 /.kotlin/sessions
-app/google-services.json
+
+# Tools and SDKs
+/build-tools/
+/emulator/
+/licenses/
+/patcher/
+/platform-tools/
+/platforms/
+/tools/

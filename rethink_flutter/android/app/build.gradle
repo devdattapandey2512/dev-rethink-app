@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 }
 
 def firestackRepo = project.findProperty("firestackRepo") ?: "github"
-def firestackCommit = project.findProperty("firestackCommit") ?: "main"
+def firestackCommit = project.findProperty("firestackCommit") ?: "d5a2534f55eededaac0a9f7b6c7fe9acf3d0109f"
 
 def firestackDependency = { suffix = ":debug" ->
     switch (firestackRepo) {
@@ -35,7 +35,7 @@ def firestackDependency = { suffix = ":debug" ->
         case "ossrh":
             return "com.celzero:firestack:$firestackCommit${suffix}@aar"
         default:
-            throw new GradleException("Unknown firestackRepo: $firestackRepo")
+            throw new org.gradle.api.GradleException("Unknown firestackRepo: $firestackRepo")
     }
 }
 
@@ -59,7 +59,7 @@ android {
 
     defaultConfig {
         applicationId "com.celzero.bravedns"
-        minSdkVersion 23
+        minSdkVersion flutter.minSdkVersion
         targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

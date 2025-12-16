@@ -23,6 +23,5 @@ class PersistentState(context: Context) {
     var defaultDnsUrl = ""
     var theme = 0
 
-    fun getVpnEnabled(): Boolean = vpnEnabled
-    fun setVpnEnabled(enabled: Boolean) { vpnEnabled = enabled }
+
 }

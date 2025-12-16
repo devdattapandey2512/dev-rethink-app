@@ -7,7 +7,7 @@ object WireguardManager {
     fun getConfigById(id: Int): Config? = null
     fun getConfigFilesById(id: Int): ConfigFiles? = null
     fun getOneWireGuardProxyId(): Int? = null
-    data class Config(val id: Int) { fun getId() = id; fun toWgUserspaceString(skip: Boolean) = "" }
+    data class Config(val id: Int) { fun toWgUserspaceString(skip: Boolean) = "" }
     data class ConfigFiles(val useOnlyOnMetered: Boolean, val oneWireGuard: Boolean, val ssidEnabled: Boolean, val ssids: String)
     fun matchesSsidList(configured: String, current: String): Boolean = false
     fun enableConfig(config: ConfigFiles) {}
@@ -32,4 +32,3 @@ object WgHopManager {
     fun getHop(id: String): String = ""
 }
 
-class DnsCryptRelayEndpoint(val dnsCryptRelayURL: String)
